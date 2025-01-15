@@ -1,24 +1,23 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import Tabs from "./src/navigation/Tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
+import AppWrapper from "./src/utils/AppWrapper";
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <Tabs />
-      </NavigationContainer>
-    </SafeAreaView>
+    <AppWrapper>
+      <SafeAreaView style={styles.safeArea}>
+        <NavigationContainer>
+          <Tabs />
+        </NavigationContainer>
+      </SafeAreaView>
+    </AppWrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });

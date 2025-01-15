@@ -4,12 +4,14 @@ import Planner from "../screens/planner/Planner";
 import Settings from "../screens/settings/Settings";
 import Stats from "../screens/stats/Stats";
 import Timer from "../screens/timer/Timer";
-import { View } from "react-native-web";
+import { View } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Text } from "react-native-web";
+import { Text } from "react-native";
+import colors from "../utils/Colors";
+import { StyleSheet } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,20 +31,12 @@ const Tabs = () => {
         component={Timer}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                top: 20,
-                gap: 2,
-              }}
-            >
+            <View style={styles.navigationLink}>
               <MaterialCommunityIcons
                 name="timer-sand"
                 size={24}
                 color={focused ? "red" : "black"}
               />
-              <Text style={{ color: focused ? "red" : "black" }}>Timer</Text>
             </View>
           ),
         }}
@@ -52,20 +46,12 @@ const Tabs = () => {
         component={Planner}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                top: 20,
-                gap: 2,
-              }}
-            >
+            <View style={styles.navigationLink}>
               <Fontisto
                 name="date"
                 size={24}
                 color={focused ? "red" : "black"}
               />
-              <Text style={{ color: focused ? "red" : "black" }}>Schedule</Text>
             </View>
           ),
         }}
@@ -75,20 +61,12 @@ const Tabs = () => {
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                top: 20,
-                gap: 2,
-              }}
-            >
+            <View style={styles.navigationLink}>
               <AntDesign
                 name="home"
                 size={24}
                 color={focused ? "red" : "black"}
               />
-              <Text style={{ color: focused ? "red" : "black" }}>Home</Text>
             </View>
           ),
         }}
@@ -98,20 +76,12 @@ const Tabs = () => {
         component={Stats}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                top: 20,
-                gap: 2,
-              }}
-            >
+            <View style={styles.navigationLink}>
               <Ionicons
                 name="stats-chart-outline"
                 size={24}
                 color={focused ? "red" : "black"}
               />
-              <Text style={{ color: focused ? "red" : "black" }}>Stats</Text>
             </View>
           ),
         }}
@@ -121,20 +91,12 @@ const Tabs = () => {
         component={Settings}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                top: 20,
-                gap: 2,
-              }}
-            >
+            <View style={styles.navigationLink}>
               <Ionicons
                 name="settings-outline"
                 size={24}
                 color={focused ? "red" : "black"}
               />
-              <Text style={{ color: focused ? "red" : "black" }}>Settings</Text>
             </View>
           ),
         }}
@@ -142,5 +104,15 @@ const Tabs = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  navigationLink: {
+    alignItems: "center",
+    justifyContent: "center",
+    top: 20,
+    gap: 2,
+    color: colors.text,
+  },
+});
 
 export default Tabs;
