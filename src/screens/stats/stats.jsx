@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const stats = () => {
+const Stats = () => {
   return (
     <View>
       <Text>stats</Text>
@@ -9,6 +9,6 @@ const stats = () => {
   );
 };
 
-export default stats;
+export default Stats;
 
 const styles = StyleSheet.create({});

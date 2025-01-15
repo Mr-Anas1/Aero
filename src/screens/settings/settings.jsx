@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const settings = () => {
+const Settings = () => {
   return (
     <View>
       <Text>settings</Text>
@@ -9,6 +9,6 @@ const settings = () => {
   );
 };
 
-export default settings;
+export default Settings;
 
 const styles = StyleSheet.create({});

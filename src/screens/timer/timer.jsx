@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const timer = () => {
+const Timer = () => {
   return (
     <View>
       <Text>timer</Text>
@@ -9,6 +9,6 @@ const timer = () => {
   );
 };
 
-export default timer;
+export default Timer;
 
 const styles = StyleSheet.create({});

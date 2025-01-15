@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const planner = () => {
+const Planner = () => {
   return (
     <View>
       <Text>planner</Text>
@@ -9,6 +9,6 @@ const planner = () => {
   );
 };
 
-export default planner;
+export default Planner;
 
 const styles = StyleSheet.create({});
