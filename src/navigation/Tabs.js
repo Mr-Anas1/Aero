@@ -18,12 +18,14 @@ const Tab = createBottomTabNavigator();
 const Tabs = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: "#f8f9fa",
           height: 80,
         },
+        headerShown: false,
       }}
     >
       <Tab.Screen
