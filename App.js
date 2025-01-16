@@ -8,11 +8,11 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 export default function App() {
   return (
     <AppWrapper>
-      <SafeAreaProvider style={styles.safeArea}>
+      <View style={styles.safeArea}>
         <NavigationContainer>
           <Tabs />
         </NavigationContainer>
-      </SafeAreaProvider>
+      </View>
     </AppWrapper>
   );
 }

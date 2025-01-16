@@ -5,6 +5,7 @@ import { View } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { useState } from "react";
+import { StatusBar } from "react-native";
 
 const AppWrapper = ({ children }) => {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -28,7 +29,12 @@ const AppWrapper = ({ children }) => {
       />
     );
   }
-  return <View style={styles.container}>{children}</View>;
+  return (
+    <>
+      <StatusBar backgroundColor="rgba(0, 0, 0, 0.7)" barStyle="dark-content" />
+      <View style={styles.container}>{children}</View>
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
