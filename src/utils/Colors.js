@@ -1,10 +1,15 @@
 const colors = {
-  primary: "#CCBCFF",
-  secondary: "#A390E4",
-  accent: "#FF867A",
-  background: "#F9F9FF",
-  text: "#33334D",
+  Yellow: "#F0B429",
+  lightYellow: "#FFF9EC",
+  lightBlue: "#F0F7FF",
+  lightGreen: "#F4FBF7",
+  progressBlue: "#8FC4D3",
+  progressYellow: "#D3C88F",
+  progressPurple: "#AC82E0",
+  background: "#FFFFFF",
+  text: "#1A1A1A",
   white: "#ffffff",
+  gray: "#6B6B6B",
 };
 
 export default colors;
