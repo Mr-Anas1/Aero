@@ -4,6 +4,7 @@ import homeStyle from "./home-style";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { SafeAreaView } from "react-native";
 import colors from "../../utils/Colors";
+import ProjectContainer from "../../components/projectContainer/ProjectContainer";
 
 const Home = () => {
   return (
@@ -36,15 +37,9 @@ const Home = () => {
           </View>
         </View>
 
-        <View style={homeStyle.firstContainerTwo}>
-          <View>
-            <Text style={homeStyle.projectName}>Project Me</Text>
-            <Text style={homeStyle.time}>5 hr</Text>
-          </View>
-
-          <View>
-            <Text>99%</Text>
-          </View>
+        <View style={homeStyle.mainContainer}>
+          <Text style={homeStyle.mainContainerHeading}>My Plans</Text>
+          <ProjectContainer />
         </View>
       </View>
     </SafeAreaView>

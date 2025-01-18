@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     color: colors.text,
+    marginBottom: 30,
   },
 
   greetingsContainer: {
@@ -60,32 +61,22 @@ const styles = StyleSheet.create({
     height: 60,
   },
 
-  firstContainerTwo: {
-    width: "100%",
-    height: 85,
+  mainContainer: {
+    padding: 10,
+    justifyContent: "center",
+    alignContent: "center",
+    gap: 10,
     borderColor: colors.text,
     borderWidth: 1,
     borderStyle: "solid",
     borderRadius: 18,
-    marginTop: 30,
-    backgroundColor: colors.background,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingLeft: 20,
-    paddingRight: 20,
-    marginBottom: 10,
   },
 
-  projectName: {
-    fontSize: 26,
+  mainContainerHeading: {
+    fontSize: 24,
     fontWeight: 600,
-    color: colors.text,
-  },
-
-  time: {
-    fontWeight: 600,
-    color: colors.text,
+    textAlign: "center",
+    margin: 10,
   },
 });
 
