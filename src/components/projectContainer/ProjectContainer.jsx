@@ -1,20 +1,34 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import styles from "./projectContainer-style";
+import Tag from "../Tag/Tag";
+import colors from "../../utils/Colors";
 
-const ProjectContainer = () => {
+const ProjectContainer = ({ projectName, projectDescription }) => {
   return (
-    <View style={styles.firstContainerTwo}>
+    <View style={styles.projectContainer}>
       <View>
-        <Text style={styles.projectName}>Project Me</Text>
-        <Text style={styles.secondaryText}>
-          This is a sample project about me
-        </Text>
-        <Text style={styles.time}>5 hr</Text>
+        <Text style={styles.projectName}>{projectName}</Text>
+        <Text style={styles.projectDescription}>{projectDescription}</Text>
       </View>
 
-      <View>
-        <Text>99%</Text>
+      <View style={styles.projectTags}>
+        <Tag
+          bgColor={colors.lightYellow}
+          textColor={colors.yellowBgText}
+          content={"5hr / day"}
+        />
+
+        <Tag
+          bgColor={colors.lightBlue}
+          textColor={colors.blueBgText}
+          content={"30hr Worked"}
+        />
+        <Tag
+          bgColor={colors.lightGreen}
+          textColor={colors.greenBgText}
+          content={"12 Sessions"}
+        />
       </View>
     </View>
   );

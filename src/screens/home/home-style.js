@@ -5,14 +5,14 @@ const styles = StyleSheet.create({
   home: {
     flex: 1,
     backgroundColor: colors.background,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
   },
 
   firstContainer: {
     fontFamily: "Poppins-Regular",
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24,
     backgroundColor: colors.primary,
-    padding: 20,
+    position: "relative",
   },
 
   firstContainerOne: {
@@ -77,6 +77,19 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     textAlign: "center",
     margin: 10,
+  },
+
+  addBtnBg: {
+    backgroundColor: colors.white,
+    height: 58,
+    width: 58,
+    borderRadius: 100,
+  },
+
+  addBtn: {
+    position: "absolute",
+    right: 30,
+    bottom: 30,
   },
 });
 

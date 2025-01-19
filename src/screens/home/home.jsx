@@ -5,11 +5,17 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { SafeAreaView } from "react-native";
 import colors from "../../utils/Colors";
 import ProjectContainer from "../../components/projectContainer/ProjectContainer";
+import { ScrollView } from "react-native";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { TouchableOpacity } from "react-native";
 
 const Home = () => {
   return (
     <SafeAreaView style={homeStyle.home}>
-      <View style={homeStyle.firstContainer}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={homeStyle.firstContainer}
+      >
         <View style={homeStyle.firstContainerOne}>
           <View style={homeStyle.greetings}>
             <View style={homeStyle.greetingsContainer}>
@@ -39,9 +45,17 @@ const Home = () => {
 
         <View style={homeStyle.mainContainer}>
           <Text style={homeStyle.mainContainerHeading}>My Plans</Text>
-          <ProjectContainer />
+          <ProjectContainer
+            projectName={"Project Me"}
+            projectDescription={"This is a sample project."}
+          />
         </View>
-      </View>
+      </ScrollView>
+      <TouchableOpacity style={homeStyle.addBtn}>
+        <View style={homeStyle.addBtnBg}>
+          <AntDesign name="pluscircle" size={58} color={colors.Yellow} />
+        </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

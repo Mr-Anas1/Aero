@@ -2,31 +2,36 @@ import { StyleSheet } from "react-native";
 import colors from "../../utils/Colors";
 
 const styles = StyleSheet.create({
-  firstContainerTwo: {
+  projectContainer: {
     width: "100%",
-    height: 120,
     borderColor: colors.text,
     borderWidth: 1,
     borderStyle: "solid",
     borderRadius: 18,
     backgroundColor: colors.background,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingLeft: 20,
-    paddingRight: 20,
+    justifyContent: "center",
+    gap: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    boxSizing: "borderBox",
     marginBottom: 10,
   },
 
   projectName: {
-    fontSize: 26,
+    fontSize: 22,
     fontWeight: 600,
     color: colors.text,
+    marginBottom: 2,
   },
 
-  time: {
-    fontWeight: 600,
-    color: colors.text,
+  projectDescription: {
+    color: colors.gray,
+  },
+
+  projectTags: {
+    flexDirection: "row",
+    gap: 10,
+    flexWrap: "wrap",
   },
 });
 
