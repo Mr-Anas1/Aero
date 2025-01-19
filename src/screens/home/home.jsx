@@ -8,8 +8,11 @@ import ProjectContainer from "../../components/projectContainer/ProjectContainer
 import { ScrollView } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { TouchableOpacity } from "react-native";
+import AddProject from "../../components/AddProject/AddProject";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={homeStyle.home}>
       <ScrollView
@@ -51,7 +54,10 @@ const Home = () => {
           />
         </View>
       </ScrollView>
-      <TouchableOpacity style={homeStyle.addBtn}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("AddProject")}
+        style={homeStyle.addBtn}
+      >
         <View style={homeStyle.addBtnBg}>
           <AntDesign name="pluscircle" size={58} color={colors.Yellow} />
         </View>

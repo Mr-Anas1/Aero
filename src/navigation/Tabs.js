@@ -12,10 +12,13 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Text } from "react-native";
 import colors from "../utils/Colors";
 import { StyleSheet } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import AddProject from "../components/AddProject/AddProject";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const Tabs = () => {
+const TabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -104,6 +107,26 @@ const Tabs = () => {
         }}
       />
     </Tab.Navigator>
+  );
+};
+
+const Tabs = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="TabNavigator"
+        component={TabNavigator}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="AddProject"
+        component={AddProject}
+        options={{
+          title: "Add New Plan",
+        }}
+      />
+    </Stack.Navigator>
   );
 };
 
