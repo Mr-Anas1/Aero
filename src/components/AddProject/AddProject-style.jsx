@@ -74,6 +74,10 @@ const styles = StyleSheet.create({
   sliderBar: {
     marginBottom: 20,
   },
+
+  errorInput: {
+    borderBottomColor: colors.alert,
+  },
 });
 
 export default styles;

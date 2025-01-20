@@ -1,23 +1,25 @@
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import { View, StyleSheet, Text } from "react-native";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Fontisto from "@expo/vector-icons/Fontisto";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "../screens/home/Home";
 import Planner from "../screens/planner/Planner";
 import Settings from "../screens/settings/Settings";
 import Stats from "../screens/stats/Stats";
 import Timer from "../screens/timer/Timer";
-import { View } from "react-native";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Fontisto from "@expo/vector-icons/Fontisto";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { Text } from "react-native";
-import colors from "../utils/Colors";
-import { StyleSheet } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
 import AddProject from "../components/AddProject/AddProject";
+import colors from "../utils/Colors";
+import { ProjectProvider } from "../utils/ProjectContext";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+// Tab Navigator
 const TabNavigator = () => {
   return (
     <Tab.Navigator
@@ -110,23 +112,25 @@ const TabNavigator = () => {
   );
 };
 
+// Stack Navigator with AddProject Screen
 const Tabs = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="TabNavigator"
-        component={TabNavigator}
-        options={{ headerShown: false }}
-      />
-
-      <Stack.Screen
-        name="AddProject"
-        component={AddProject}
-        options={{
-          title: "Add New Plan",
-        }}
-      />
-    </Stack.Navigator>
+    <ProjectProvider>
+      {" "}
+      {/* Wrap the app with the provider */}
+      <Stack.Navigator>
+        <Stack.Screen
+          name="TabNavigator"
+          component={TabNavigator}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AddProject"
+          component={AddProject}
+          options={{ title: "Add New Plan" }}
+        />
+      </Stack.Navigator>
+    </ProjectProvider>
   );
 };
 

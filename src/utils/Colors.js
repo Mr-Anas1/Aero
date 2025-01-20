@@ -13,6 +13,7 @@ const colors = {
   yellowBgText: "#402800",
   blueBgText: "#003A73",
   greenBgText: "#12311F",
+  alert: "#ff4545",
 };
 
 export default colors;
