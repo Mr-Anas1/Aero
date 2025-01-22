@@ -11,6 +11,7 @@ import styles from "./AddProject-style";
 import colors from "../../utils/Colors";
 import Slider from "@react-native-community/slider";
 import { ProjectContext } from "../../utils/ProjectContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AddProject = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -36,7 +37,9 @@ const AddProject = ({ navigation }) => {
   };
 
   // Submit handler
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const { addProject } = useContext(ProjectContext); // Access addProject from context
+
     const newErrors = {};
     if (!name.trim()) {
       newErrors.name = "Name is required";
@@ -50,13 +53,15 @@ const AddProject = ({ navigation }) => {
 
     if (Object.values(newErrors).every((error) => !error)) {
       const newProject = { name, description, duration };
-      addProject(newProject); // Dynamically call addProject function
-      console.log("New Project:", newProject);
+      addProject(newProject); // Update context and AsyncStorage
+      console.log("New Project Added:", newProject);
+
+      // Reset form fields and navigate back
       setName("");
       setDescription("");
       setDuration("");
       setErrors({});
-      navigation.goBack(); // Navigate back to TabNavigator
+      navigation.goBack();
     }
   };
 

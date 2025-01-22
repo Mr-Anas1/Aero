@@ -1,12 +1,25 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const ProjectContext = createContext();
+export const ProjectContext = createContext();
 
-const ProjectProvider = ({ children }) => {
+export const ProjectProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
 
-  const addProject = (newProject) => {
-    setProjects((prevProjects) => [...prevProjects, newProject]);
+  // Load projects from AsyncStorage when the app starts
+  useEffect(() => {
+    const loadProjects = async () => {
+      const storedProjects = await AsyncStorage.getItem("projects");
+      setProjects(storedProjects ? JSON.parse(storedProjects) : []);
+    };
+    loadProjects();
+  }, []);
+
+  // Function to add a new project and update context
+  const addProject = async (newProject) => {
+    const updatedProjects = [...projects, newProject];
+    setProjects(updatedProjects);
+    await AsyncStorage.setItem("projects", JSON.stringify(updatedProjects));
   };
 
   return (
@@ -15,5 +28,3 @@ const ProjectProvider = ({ children }) => {
     </ProjectContext.Provider>
   );
 };
-
-export { ProjectContext, ProjectProvider };
