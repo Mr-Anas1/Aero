@@ -14,6 +14,7 @@ import colors from "../../utils/Colors";
 import homeStyle from "./home-style";
 import { ProjectContext } from "../../utils/ProjectContext";
 import ProjectContainer from "../../components/projectContainer/ProjectContainer";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -27,24 +28,13 @@ const Home = () => {
       >
         {/* Greetings Section */}
         <View style={homeStyle.firstContainerOne}>
-          <View style={homeStyle.greetings}>
-            <View style={homeStyle.greetingsContainer}>
-              <View style={homeStyle.greetingContainerFirst}>
-                <Text style={homeStyle.greetingIntro}>Hey</Text>
-                <MaterialIcons
-                  name="waving-hand"
-                  size={24}
-                  color={colors.text}
-                />
-              </View>
-              <Text style={homeStyle.greetingName}>Mohamed Anas</Text>
-            </View>
+          <View style={homeStyle.header}>
+            <Text style={homeStyle.headerName}>Aero</Text>
           </View>
-          <View style={homeStyle.profile}>
-            <Image
-              source={require("../../../assets/images/profile.png")}
-              style={homeStyle.profileImg}
-            />
+          <View style={homeStyle.settings}>
+            <TouchableOpacity>
+              <Ionicons name="settings-sharp" size={26} color="black" />
+            </TouchableOpacity>
           </View>
         </View>
 

@@ -6,49 +6,32 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { React, useState, useContext } from "react"; // Import useContext
+import React, { useState, useContext } from "react"; // Corrected import
 import styles from "./AddProject-style";
 import colors from "../../utils/Colors";
 import Slider from "@react-native-community/slider";
 import { ProjectContext } from "../../utils/ProjectContext";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AddProject = ({ navigation }) => {
+  const { addProject } = useContext(ProjectContext);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [duration, setDuration] = useState("");
-  const [errors, setErrors] = useState({
-    name: "",
-    description: "",
-  });
+  const [duration, setDuration] = useState(1);
+  const [errors, setErrors] = useState({});
 
-  const { addProject } = useContext(ProjectContext); // Access addProject from context
-
-  // Validation function on blur
-  const handleBlur = (field, value) => {
-    const newErrors = { ...errors };
-    if (!value.trim()) {
-      newErrors[field] = "This field is required";
-    } else {
-      newErrors[field] = "";
-    }
-
-    setErrors(newErrors);
+  // Validation function
+  const validateFields = (field = null) => {
+    const newErrors = {};
+    if ((!field || field === "name") && !name.trim())
+      newErrors.name = "Name is required";
+    if ((!field || field === "description") && !description.trim())
+      newErrors.description = "Description is required";
+    return newErrors;
   };
 
   // Submit handler
-  const handleSubmit = async () => {
-    const { addProject } = useContext(ProjectContext); // Access addProject from context
-
-    const newErrors = {};
-    if (!name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!description.trim()) {
-      newErrors.description = "Description is required";
-    }
-
+  const handleSubmit = () => {
+    const newErrors = validateFields();
     setErrors(newErrors);
 
     if (Object.values(newErrors).every((error) => !error)) {
@@ -59,10 +42,16 @@ const AddProject = ({ navigation }) => {
       // Reset form fields and navigate back
       setName("");
       setDescription("");
-      setDuration("");
+      setDuration(1);
       setErrors({});
       navigation.goBack();
     }
+  };
+
+  const renderError = (field) => {
+    return errors[field] ? (
+      <Text style={styles.errorText}>{errors[field]}</Text>
+    ) : null;
   };
 
   return (
@@ -75,8 +64,14 @@ const AddProject = ({ navigation }) => {
             style={[styles.input, errors.name ? styles.errorInput : null]}
             value={name}
             onChangeText={setName}
-            onBlur={() => handleBlur("name", name)}
+            onBlur={() =>
+              setErrors((prevErrors) => ({
+                ...prevErrors,
+                ...validateFields("name"),
+              }))
+            }
           />
+          {renderError("name")}
 
           <Text style={styles.label}>Description</Text>
           <TextInput
@@ -86,8 +81,14 @@ const AddProject = ({ navigation }) => {
             ]}
             value={description}
             onChangeText={setDescription}
-            onBlur={() => handleBlur("description", description)}
+            onBlur={() =>
+              setErrors((prevErrors) => ({
+                ...prevErrors,
+                ...validateFields("description"),
+              }))
+            }
           />
+          {renderError("description")}
 
           <View style={styles.durationHeading}>
             <Text style={styles.label}>Duration</Text>
@@ -106,7 +107,7 @@ const AddProject = ({ navigation }) => {
             style={styles.sliderBar}
           />
 
-          <TouchableOpacity onPress={handleSubmit}>
+          <TouchableOpacity onPress={handleSubmit} activeOpacity={0.8}>
             <View style={styles.btn}>
               <Text style={styles.btnText}>Save</Text>
             </View>

@@ -117,7 +117,6 @@ const Tabs = () => {
   return (
     <ProjectProvider>
       {" "}
-      {/* Wrap the app with the provider */}
       <Stack.Navigator>
         <Stack.Screen
           name="TabNavigator"
