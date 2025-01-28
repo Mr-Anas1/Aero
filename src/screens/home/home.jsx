@@ -8,7 +8,6 @@ import {
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import colors from "../../utils/Colors";
 import homeStyle from "./home-style";
@@ -22,10 +21,7 @@ const Home = () => {
 
   return (
     <SafeAreaView style={homeStyle.home}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={homeStyle.firstContainer}
-      >
+      <ScrollView showsVerticalScrollIndicator={false}>
         {/* Greetings Section */}
         <View style={homeStyle.firstContainerOne}>
           <View style={homeStyle.header}>
